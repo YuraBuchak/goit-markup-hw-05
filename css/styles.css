@@ -317,17 +317,15 @@ img {
   height: 100%;
   color: #AFB1B8;
 }
-.team-soc-icon {
-  fill: currentColor;
-}
 .social-contacts-link:hover,
 .social-contacts-link:focus {
   background-color: var(--brand-color);
+  color:#ffffff;
 }
-.social-contacts-link:hover .team-soc-icon,
-.social-contacts-link:focus .team-soc-icon {
-  fill: #ffffff;
+.team-soc-icon {
+  fill: currentColor;
 }
+
 /* <!-- -----------ПОСТІЙНІ КЛІЄНТИ --> */
 .clients-section {
   padding-top: 94px;
@@ -364,13 +362,10 @@ img {
 .client-link:hover,
 .client-link:focus {
   border: 1px solid var(--brand-color);
+  color: var(--brand-color);
 }
 .clients-icon {
   fill: currentColor;
-}
-.client-link:hover .clients-icon,
-.client-link:focus .clients-icon {
-  fill: var(--brand-color);
 }
 
 /* _____________________ФУТЕР */
@@ -396,39 +391,31 @@ img {
 .footer-logo {
   color: #ffffff;
 }
-
 .address-map {
   font-size: 14px;
   line-height: calc(24 / 14);
   letter-spacing: 0.03em;
   font-style: normal;
+   text-decoration: none;
   color: #ffffff;
   display: inline-block;
   margin-bottom: 9px;
 }
-
-.address-map,
 .address-tel,
-.address-mail {
-  text-decoration: none;
-}
-
 .address-mail {
   display: inline-block;
-  margin-bottom: 9px;
-}
-.address-tel,
-.address-mail {
   font-style: normal;
   font-size: 14px;
   line-height: calc(24 / 14);
   letter-spacing: 0.03em;
+  text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
 }
-.address-tel:hover,
-.address-tel:focus {
-  color: var(--brand-color);
+.address-mail {
+  margin-bottom: 9px;
 }
+.address-tel:hover,
+.address-tel:focus,
 .address-mail:hover,
 .address-mail:focus {
   color: var(--brand-color);
