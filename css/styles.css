@@ -1,6 +1,11 @@
 :root {
   --brand-color: #2196f3;
   --text-color: #757575;
+  --anima-tz: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -43,6 +48,10 @@ img {
   background-color: #ffffff;
   border-bottom: 1px solid #ececec;
 }
+.heder-container {
+  display: flex;
+  align-items: center;
+}
 .logo {
   font-family: "Raleway", sans-serif;
   font-size: 26px;
@@ -55,12 +64,7 @@ img {
   color: #000000;
 }
 
-.heder-container {
-  display: flex;
-  align-items: center;
-}
-
-/*---------------------- навігація */
+/*------- навігація */
 
 .navigation {
   display: flex;
@@ -86,6 +90,9 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: #212121;
+
+  position: relative;
+  transition: color var(--anima-tz);
 }
 .navigation-link:hover,
 .navigation-link:focus {
@@ -110,6 +117,8 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--text-color);
+
+  transition: color var(--anima-tz);
 }
 .header-mail-icon,
 .heder-tel-icon {
@@ -123,6 +132,20 @@ img {
 .navigation-link.current {
   color: var(--brand-color);
 }
+
+.navigation-link.current::after {
+  content: "";
+  display: inline-block;
+  height: 4px;
+  width: 100%;
+  background: var(--brand-color);
+  border-radius: 2px;
+
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+}
+/* transform: translateY(46px); або боттом -2 */
 
 /*------------------------------ ГЕРОЙ */
 .hero-section {
@@ -174,11 +197,13 @@ img {
   border-color: transparent;
   cursor: pointer;
   background: var(--brand-color);
+
+  transition: background var(--anima-tz);
 }
 
 .hero-btn:hover,
 .hero-btn:focus {
-  background-color: rgb(8, 117, 219);
+  background-color: rgb(7, 102, 190);
 }
 
 /*------------------------------ ПЕРЕВАГИ */
@@ -340,12 +365,15 @@ img {
   width: 100%;
   height: 100%;
   color: #afb1b8;
+  transition: background-color var(--anima-tz), color var(--anima-tz);
 }
+
 .social-contacts-link:hover,
 .social-contacts-link:focus {
   background-color: var(--brand-color);
   color: #ffffff;
 }
+
 .team-soc-icon {
   fill: currentColor;
 }
@@ -382,6 +410,7 @@ img {
   color: #afb1b8;
   border: 1px solid #afb1b8;
   border-radius: 4px;
+  transition: color var(--anima-tz), border var(--anima-tz);
 }
 .client-link:hover,
 .client-link:focus {
@@ -434,6 +463,8 @@ img {
   letter-spacing: 0.03em;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
+
+  transition: color var(--anima-tz);
 }
 .address-mail {
   margin-bottom: 9px;
@@ -474,6 +505,8 @@ img {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+
+  transition: background-color var(--anima-tz);
 }
 .social-frlink:hover,
 .social-frlink:focus {
@@ -512,7 +545,11 @@ img {
   cursor: pointer;
   padding: 6px 22px;
   border-color: transparent;
+
+  transition: color var(--anima-tz), background-color var(--anima-tz),
+    box-shadow var(--anima-tz);
 }
+
 .filtr-btn:hover,
 .filtr-btn:focus {
   color: #ffffff;
@@ -553,9 +590,79 @@ img {
 }
 .p-projects-link {
   display: block;
+  transition: box-shadow var(--anima-tz);
 }
 .p-projects-item:hover .p-projects-link,
 .p-projects-item:focus .p-projects-link {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+
+/* оверлей */
+.project-overlay-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 63px 24px;
+  height: 100%;
+  width: 100%;
+  background: rgba(33, 150, 243, 0.9);
+  /* border: 1px solid #000000; */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+
+  transform: translateY(100%);
+  transition: transform var(--anima-tz), opacity var(--anima-tz);
+}
+
+.p-projects-item:hover .project-overlay {
+  transform: translateY(0);
+  opacity: 1;
+  backdrop-filter: blur(3px);
+}
+
+.project-overlay-text {
+  font-size: 18px;
+  line-height: calc(28 / 18);
+  letter-spacing: 0.03em;
+  color: #ffffff;
+}
+
+/* -------------------------оверлей з before */
+
+/* .project-overlay-thumb {
+  position: relative;
+}
+
+ .project-overlay-thumb::before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+ background: rgba(33, 150, 243, 0.9);
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+ }
+ .project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+  width: 100%;
+  opacity: 0;
+ }
+ .project-overlay-thumb:hover::before {
+ opacity: 1;
+ }
+ .project-overlay:hover {
+  opacity: 1;
+ } */
+/* -------------------------оверлей з before */
