@@ -635,11 +635,9 @@ img {
 }
 
 /* -------------------------оверлей з before */
-
 /* .project-overlay-thumb {
   position: relative;
 }
-
  .project-overlay-thumb::before {
   position: absolute;
   content: "";
@@ -666,3 +664,66 @@ img {
   opacity: 1;
  } */
 /* -------------------------оверлей з before */
+
+
+/*------------------------------ МОДАЛКА */
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+
+  transition: opacity var(--anima-tz),
+  visibility var(--anima-tz);
+}
+
+.modal {
+width: 528px;
+min-height: 581px;
+background: #FFFFFF;
+box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+border-radius: 4px;
+
+position: absolute;
+top: 50%;
+left: 50%;
+transform:translate(-50%, -50%);
+transition: box-shadov var(--anima-tz),
+transform var(--anima-tz),
+opacity var(--anima-tz);
+}
+
+.backdrop.is-hidden .modal {
+  opacity: 0;
+transform: translateX(-50%) translateY(-80%);
+}
+
+.button-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+width: 30px;
+height: 30px;
+background: #FFFFFF;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 50%;
+cursor: pointer;
+
+position: absolute;
+top: 8px;
+right: 8px;
+}
+
+.icon-close {
+  fill: currentColor;
+}
